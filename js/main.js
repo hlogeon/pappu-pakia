@@ -95,6 +95,7 @@ mit.main = function() {
       $(this).css("backgroundPosition", "0px 0px");
       music.volume = 0.2;
       isMute = false;
+      music.play();
     }
     return false;
   });
@@ -112,7 +113,9 @@ mit.main = function() {
   // Start Button
   var startGame = function() {
     // Play the awesome music! Really awesome
-    music.play();
+    if (!isMute) {
+      music.play();
+    }
     flap.pause();
 
     // Hide the Start Screen
