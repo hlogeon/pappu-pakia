@@ -38,7 +38,7 @@ mit.main = function() {
     start_game: $('#start_game'),
     tweet: $('#tweet'),
     fb: $('#fb'),
-    fps_count: $('#fps_count'),
+    // fps_count: $('#fps_count'),
     invincible_timer: $('#invincible_timer'),
     invincible_loader: $('#invincible_loader')
   };
@@ -80,8 +80,8 @@ mit.main = function() {
 
   var music = document.getElementById("start");
   music.volume = 0.2;
-  
-  var isMute = false;
+
+  var isMute = true;
 
   // Mute the game if button is clicked
   $("#mute").click(function() {
@@ -96,7 +96,6 @@ mit.main = function() {
       music.volume = 0.2;
       isMute = false;
     }
-
     return false;
   });
 
@@ -164,11 +163,11 @@ mit.main = function() {
   // startGame();
 
   // Share links
-  var tweet = document.getElementById("tweet");
-  tweet.href='http://twitter.com/share?url=http://khele.in/pappu-pakia/&text=I am playing Pappu Pakia, a cute HTML5 game on khele.in!&count=horiztonal&via=_rishabhp&related=solitarydesigns';
-
-  var facebook = document.getElementById("fb");
-  facebook.href='http://facebook.com/sharer.php?s=100&p[url]=http://khele.in/pappu-pakia/&p[title]=I am playing Pappu Pakia, a cute HTML5 game on khele.in!';
+  // var tweet = document.getElementById("tweet");
+  // tweet.href='http://twitter.com/share?url=http://khele.in/pappu-pakia/&text=I am playing Pappu Pakia, a cute HTML5 game on khele.in!&count=horiztonal&via=_rishabhp&related=solitarydesigns';
+  //
+  // var facebook = document.getElementById("fb");
+  // facebook.href='http://facebook.com/sharer.php?s=100&p[url]=http://khele.in/pappu-pakia/&p[title]=I am playing Pappu Pakia, a cute HTML5 game on khele.in!';
 
 
   // Score Board
@@ -177,7 +176,7 @@ mit.main = function() {
 
     mit.highScore = JSON.parse(localStorage.getItem("highScore"));
     if (mit.highScore)
-      ui.high_score.text("High Score: "+ mit.highScore);
+      ui.high_score.text("Лучший результат: "+ mit.highScore);
 
   } catch (e) {}
 
@@ -295,16 +294,16 @@ mit.main = function() {
       mit.highScore = parseInt(mit.score);
       localStorage.setItem("highScore", JSON.stringify(parseInt(mit.score)));
 
-      ui.high_score.text("High Score: "+ mit.highScore);
+      ui.high_score.text("Лучший результат: "+ mit.highScore);
     }
 
     // Show last_score
-    ui.last_score.text("Last Score: " + parseInt(mit.score));
+    ui.last_score.text("Результат: " + parseInt(mit.score));
 
 
-    ui.start_game.html('re-start');
-    ui.tweet.html('tweet score');
-    ui.fb.html('post on fb');
+    // ui.start_game.html('re-start');
+    // ui.tweet.html('tweet score');
+    // ui.fb.html('post on fb');
 
     mit.descend();
 
@@ -323,19 +322,13 @@ mit.main = function() {
     mit.Pappu.clones.length = 0;
 
     // Share
-    var tweet = document.getElementById("tweet");
-    tweet.href='http://twitter.com/share?url=http://khele.in/pappu-pakia/&text=I just scored ' +Math.floor(mit.score)+ ' points in Pappu Pakia!&count=horiztonal&via=_rishabhp&related=solitarydesigns';
+    // var tweet = document.getElementById("tweet");
+    // tweet.href='http://twitter.com/share?url=http://khele.in/pappu-pakia/&text=I just scored ' +Math.floor(mit.score)+ ' points in Pappu Pakia!&count=horiztonal&via=_rishabhp&related=solitarydesigns';
   
-    var facebook = document.getElementById("fb");
-    facebook.href='http://facebook.com/sharer.php?s=100&p[url]=http://khele.in/pappu-pakia/&p[title]=I just scored ' +Math.floor(mit.score)+ ' points in the Pappu Pakia!';
+    // var facebook = document.getElementById("fb");
+    // facebook.href='http://facebook.com/sharer.php?s=100&p[url]=http://khele.in/pappu-pakia/&p[title]=I just scored ' +Math.floor(mit.score)+ ' points in the Pappu Pakia!';
 
   };
-
-  mit.last_time = new Date();
-  setInterval(function() {
-    mit.ui.fps_count.html(mit.fps.toFixed(0) + ' FPS');
-  }, 1000);
-
 
   // Initializations
   mit.Backgrounds.init(ctx);
@@ -453,11 +446,6 @@ mit.main = function() {
     else {
       mit.Pappu.drawStatic(ctx);
     }
-
-    // Calculate FPS
-    mit.cur_time = new Date;
-    mit.fps = 1e3 / (mit.cur_time - mit.last_time);
-    mit.last_time = mit.cur_time;
 
     return;
   }());

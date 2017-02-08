@@ -76,7 +76,7 @@
           counter++;
           percent = Math.floor((counter/size*100));
           loading.style.width = percent + "%";
-          loadText.innerHTML = "Loading... " + percent + "%";
+          loadText.innerHTML = "Загрузка... " + percent + "%";
 
           if(percent >= 100) {
             $("#loading").fadeOut();
@@ -89,7 +89,7 @@
         counter++;
         percent = Math.floor((counter/size*100));
         loading.style.width = percent + "%";
-        loadText.innerHTML = "Loading... " + percent + "%";
+        loadText.innerHTML = "Загрузка... " + percent + "%";
 
         if(percent >= 100) {
           $("#loading").fadeOut();
@@ -109,7 +109,7 @@
 
       percent = Math.floor(((counter)/size*100));
       loading.style.width = percent + "%";
-      loadText.innerHTML = "Loading... " + percent + "%";
+      loadText.innerHTML = "Загрузка... " + percent + "%";
       
       if(percent >= 100) {
         $("#loading").fadeOut();
